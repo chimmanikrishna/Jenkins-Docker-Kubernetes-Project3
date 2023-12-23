@@ -31,27 +31,17 @@ pipeline {
 		    }
 	    }
 	    
-	    stage('Build Docker Image') {
-		    steps {
-			    sh 'whoami'
-			    script {
-				    myimage = docker.build("9666109090/devops:${env.BUILD_ID}")
-			    }
-		    }
-	    }
-	    
-	    stage("Push Docker Image") {
-		    steps {
-			    script {
-				    echo "Push Docker Image"
-				    withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
-            			    sh "docker login -u krishnachimmani9090@gmail.com -p ${docker}"
-				    }
-				    myimage.push("${env.BUILD_ID}")
-				    
-			    }
-		    }
-	    }
+	    stage("Docker Build & Push"){
+            steps{
+                script{
+                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
+                       sh "docker build -t devsecops_ad ."
+                       sh "docker tag devsecops_ad 9666109090/devsecops_ad:latest "
+                       sh "docker push 9666109090/devsecops_ad:latest "
+                    }
+                }
+            }
+        }
 	    
 	    stage('Deploy to K8s') {
 		    steps{
