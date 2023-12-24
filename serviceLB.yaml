@@ -17,7 +17,7 @@ spec:
   spec:
    containers:
    - name: myapp-app-loadbalancer
-     image: ameintu/devops:tagversion
+     image: 9666109090/devsecops_ad:latest
      ports:
      - containerPort: 8080
 
