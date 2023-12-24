@@ -6,8 +6,8 @@ pipeline {
 	
 	environment {
 		PROJECT_ID = 'balakrishna-407808'
-                CLUSTER_NAME = 'autopilot-cluster-1'
-                LOCATION = 'us-central1'
+                CLUSTER_NAME = 'cluster-1'
+                LOCATION = 'us-central1-c'
                 CREDENTIALS_ID = 'kubernetes'		
 	}
 	
