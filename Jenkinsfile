@@ -38,6 +38,7 @@ pipeline {
                        sh "docker build -t devsecops_ad ."
                        sh "docker tag devsecops_ad 9666109090/devsecops_ad:latest "
                        sh "docker push 9666109090/devsecops_ad:latest "
+		       echo "this is balakrishna"	   
                     }
                 }
             }
